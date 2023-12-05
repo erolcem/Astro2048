@@ -1,0 +1,17 @@
+#include <SFML/Graphics.hpp>
+#include "tile.hpp"
+#include <iostream>
+
+#ifndef BOARD_H
+#define BOARD_H
+class Board{
+    public:
+
+    std::array<std::array<Tile, 4>, 4> boardMatrix;
+
+    Board();
+    
+};
+
+
+#endif
