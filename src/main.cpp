@@ -2,14 +2,15 @@
 #include<SFML/Window.hpp>
 #include<SFML/System.hpp>
 #include <iostream>
+#include "../headers/board.hpp"
 
-//arch -x86_64 g++ -std=c++17 src/main.cpp -o main -lsfml-graphics -lsfml-window -lsfml-system
+//arch -x86_64 g++ -std=c++17 src/main.cpp src/tile.cpp src/board.cpp -o main -lsfml-graphics -lsfml-window -lsfml-system
 
 
 int main()
 {
-    int windowsWidth = 900;
-    int windowsHeight = 900;
+    int windowsWidth = 885;
+    int windowsHeight = 885;
     int Xindex = 0;
     int Yindex = 0;
 
@@ -34,7 +35,7 @@ int main()
         std::cout << "player image failed to load\n";
     }
 
-
+    Board board;
 
     while (window.isOpen())
     {
@@ -49,7 +50,9 @@ int main()
         window.clear(sf::Color::White);
 
 
-        window.draw(BackgroundSprite);
+        //window.draw(BackgroundSprite);
+        window.clear(sf::Color(168, 94, 50));
+        board.draw(window);
 
 
         window.display();

@@ -10,6 +10,8 @@ class Board{
     std::array<std::array<Tile, 4>, 4> boardMatrix;
 
     Board();
+
+    void draw(sf::RenderWindow& window);
     
 };
 
