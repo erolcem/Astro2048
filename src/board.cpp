@@ -2,7 +2,7 @@
 
 Board::Board() {
     for (int i = 0; i < boardMatrix.size(); i++) {
-        for (int j = 0; boardMatrix[i].size() < 4; j++) {
+        for (int j = 0; j < boardMatrix[i].size(); j++) {
             boardMatrix[i][j] = Tile(true, false); 
         }
     }
