@@ -15,3 +15,8 @@ void Tile::draw(sf::RenderWindow& window, int x, int y) {
     rectangle.setFillColor(sf::Color(168, 135, 50));
     window.draw(rectangle);
 }
+
+void Tile::setValue(int NewVal) {
+    value = NewVal;
+}
+

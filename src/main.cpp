@@ -45,6 +45,20 @@ int main()
             {
                 window.close();
             }
+        
+
+            if(event.type == sf::Event::KeyPressed) {
+                switch (event.key.code)
+                {
+                    case sf::Keyboard::W: board.moveUp(); std::cout <<"UP\n" ;break;
+                    case sf::Keyboard::A: board.moveLeft(); break;
+                    case sf::Keyboard::S: board.moveDown(); break;
+                    case sf::Keyboard::D: board.moveRight(); break;
+                
+                default:
+                    break;
+                }
+            }
         }
 
         window.clear(sf::Color::White);
@@ -56,5 +70,6 @@ int main()
 
 
         window.display();
+        
     }
 }

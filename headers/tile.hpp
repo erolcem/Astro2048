@@ -17,6 +17,7 @@ class Tile{
 
     void draw(sf::RenderWindow& window, int x, int y);
 
+    void setValue(int newVal);
 
     
 };
