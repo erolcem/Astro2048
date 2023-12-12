@@ -36,6 +36,29 @@ int main()
     }
 
     Board board;
+    board.SpawnRandomTile();
+    board.SpawnRandomTile();
+
+    sf::Font font;
+    sf::Text text;
+
+    if (!font.loadFromFile("../fonts/arial.ttf")) //../fonts/
+    {
+        std::cout << "Error importing fontAAAAAA\n";
+    }
+
+    text.setFont(font); 
+
+    // Convert the integer value to a string
+    //std::stringstream ss;
+    //ss << 100;
+    //text.setString(ss.str()); 
+
+    text.setString("Hello world");
+
+
+    text.setCharacterSize(50); 
+    text.setFillColor(sf::Color::Black);
 
     while (window.isOpen())
     {
@@ -68,6 +91,7 @@ int main()
         window.clear(sf::Color(168, 94, 50));
         board.draw(window);
 
+        window.draw(text); 
 
         window.display();
         

@@ -1,4 +1,6 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <sstream>
 
 #ifndef TILE_H
 #define TILE_H
@@ -10,6 +12,8 @@ class Tile{
     int value;
     bool isEmpty;
     bool isMerging;
+
+    sf::Font font;
 
     Tile(bool empty, bool merging);
 
