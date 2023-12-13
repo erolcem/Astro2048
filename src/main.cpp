@@ -6,6 +6,8 @@
 
 //arch -x86_64 g++ -std=c++17 src/main.cpp src/tile.cpp src/board.cpp -o main -lsfml-graphics -lsfml-window -lsfml-system
 
+//arch -x86_64 g++ -std=c++17 src/main.cpp src/tile.cpp src/board.cpp src/drawTiles.cpp -o main -lsfml-graphics -lsfml-window -lsfml-system
+
 
 int main()
 {
@@ -17,23 +19,6 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(windowsWidth, windowsHeight), "2048");
     window.setFramerateLimit(144);
-
-    // Background setup
-    sf::Texture BackgroundTexture;
-    sf::Sprite BackgroundSprite;
-    
-    if (BackgroundTexture.loadFromFile("./images/grid.png")) {
-        std::cout << "successful sprite loading\n";
-
-
-        BackgroundSprite.setTexture(BackgroundTexture);
-        BackgroundSprite.setTextureRect(sf::IntRect(Xindex*0, Yindex*0,  225, 225));
-        BackgroundSprite.scale(sf::Vector2f(4, 4));
-    }
-    else
-    {
-        std::cout << "player image failed to load\n";
-    }
 
     Board board;
     board.SpawnRandomTile();
@@ -84,13 +69,8 @@ int main()
             }
         }
 
-        window.clear(sf::Color::White);
-
-
-        //window.draw(BackgroundSprite);
-        window.clear(sf::Color(168, 94, 50));
+        window.clear(sf::Color(64, 55, 37));
         board.draw(window);
-
         window.draw(text); 
 
         window.display();

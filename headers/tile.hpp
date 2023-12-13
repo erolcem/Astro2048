@@ -6,12 +6,12 @@
 #define TILE_H
 class Tile{
     public:
-    static const int TILESIZE;
-    static const int PADDING; 
 
     int value;
     bool isEmpty;
     bool isMerging;
+
+    std::map<int, sf::Color> colourMap;
 
     sf::Font font;
 
