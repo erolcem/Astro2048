@@ -8,6 +8,22 @@ Tile::Tile(bool empty, bool merging) {
     isMerging = merging;
 
     colourMap = {
+    {0, sf::Color(140, 123, 90)}, // Keep the same color for 0
+    {2, sf::Color(255, 0, 0)}, // Red
+    {4, sf::Color(255, 127, 0)}, // Orange
+    {8, sf::Color(255, 255, 0)}, // Yellow
+    {16, sf::Color(0, 255, 0)}, // Green
+    {32, sf::Color(0, 0, 255)}, // Blue
+    {64, sf::Color(46, 43, 95)}, // Indigo
+    {128, sf::Color(139, 0, 255)}, // Violet
+    {256, sf::Color(255, 0, 255)}, // Magenta
+    {512, sf::Color(255, 255, 255)}, // White
+    {1024, sf::Color(127, 127, 127)}, // Gray
+    {2048, sf::Color(0, 0, 0)}, // Black
+    // Continue with other colors as needed
+};
+/**
+    colourMap = {
     {0, sf::Color(140, 123, 90)},
     {2, sf::Color(191, 183, 166)},
     {4, sf::Color(209, 197, 169)},
@@ -27,6 +43,7 @@ Tile::Tile(bool empty, bool merging) {
     {65536, sf::Color(17, 128, 26)},
     {131072, sf::Color(52, 120, 209)},
 };
+*/
 /**
     if (!font.loadFromFile("../fonts/arial.ttf")) //../fonts/
     {
