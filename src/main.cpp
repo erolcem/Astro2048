@@ -4,7 +4,9 @@
 #include <iostream>
 #include "../headers/board.hpp"
 
-//arch -x86_64 g++ -std=c++17 src/main.cpp src/tile.cpp src/board.cpp -o main -lsfml-graphics -lsfml-window -lsfml-system
+// arch -x86_64 g++ -std=c++17 src/main.cpp src/tile.cpp src/board.cpp -o main -lsfml-graphics -lsfml-window -lsfml-system
+// ./build/bin/2048
+
 
 
 
