@@ -59,10 +59,10 @@ void Tile::draw(sf::RenderWindow& window, int x, int y) {
     sf::RectangleShape tileDrawn(sf::Vector2f(TILESIZE - 2 * PADDING, TILESIZE - 2 * PADDING));
     tileDrawn.setPosition(x * TILESIZE + PADDING, y * TILESIZE + PADDING); 
 
-    if (colourMap.count(value) > 0) {
+    if (colourMap.count(value) > 0 && !isEmpty) {
         tileDrawn.setFillColor(colourMap[value]);
     } else {
-        tileDrawn.setFillColor(sf::Color::Black);
+        tileDrawn.setFillColor(colourMap[0]);
     }
 
 

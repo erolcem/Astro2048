@@ -74,6 +74,7 @@ void Board::moveLeft() {
                         // merge tiles with the same value
                         boardMatrix[k - 1][j].value *= 2;
                         boardMatrix[k][j].isEmpty = true;
+                        boardMatrix[k][j].value = 0;
                     }
                     // remove a k, so the loop checks the tile above
                     --k;
@@ -99,6 +100,7 @@ void Board::moveRight() {
                     } else if (boardMatrix[k + 1][j].value == boardMatrix[k][j].value) {
                         boardMatrix[k + 1][j].value *= 2;
                         boardMatrix[k][j].isEmpty = true;
+                        boardMatrix[k][j].value = 0;
                     }
                     ++k;
                 }
@@ -121,6 +123,7 @@ void Board::moveUp() {
                     } else if (boardMatrix[i][k - 1].value == boardMatrix[i][k].value) {
                         boardMatrix[i][k - 1].value *= 2;
                         boardMatrix[i][k].isEmpty = true;
+                        boardMatrix[k][j].value = 0;
                     }
                     --k;
                 }
@@ -144,6 +147,7 @@ void Board::moveDown() {
                     } else if (boardMatrix[i][k + 1].value == boardMatrix[i][k].value) {
                         boardMatrix[i][k + 1].value *= 2;
                         boardMatrix[i][k].isEmpty = true;
+                        boardMatrix[k][j].value = 0;
                     }
                     ++k;
                 }
