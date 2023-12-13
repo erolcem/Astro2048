@@ -45,6 +45,8 @@ void Board::SpawnRandomTile() {
         //place the new tile in selected position
         boardMatrix[emptyPositions[randomIndex].first][emptyPositions[randomIndex].second].isEmpty = false;
         boardMatrix[emptyPositions[randomIndex].first][emptyPositions[randomIndex].second].value = randomValue;
+
+    
         
         //for bool. ignore
         //return true;
@@ -56,124 +58,97 @@ void Board::SpawnRandomTile() {
 
 
 
-void Board::moveUp() {
-    //iterate through each column
+void Board::moveLeft() {
+    // iterate through each column
     for (int j = 0; j < boardMatrix[0].size(); ++j) {
-        //iterate through each row (no need to check the 1st row for upward movement)
+        // iterate through each row (no need to check the 1st row for upward movement)
         for (int i = 1; i < boardMatrix.size(); ++i) {
-            //checks if matrix is empty
-            if (boardMatrix[i][j].isEmpty) {
-                //loop will iterate upward through the column as long as there is empty space above the tile, or a tile that has same value as current tile
+            // checks if matrix is empty
+            if (!boardMatrix[i][j].isEmpty) {
                 int k = i;
-                //if tiles above are empty, tiles are swapped. 
-                //if tiles have same value, they merge
+                // loop will iterate upward through the column as long as there is empty space above the tile or a tile that has the same value as the current tile
                 while (k > 0 && (boardMatrix[k - 1][j].isEmpty || boardMatrix[k - 1][j].value == boardMatrix[k][j].value)) {
                     if (boardMatrix[k - 1][j].isEmpty) {
                         std::swap(boardMatrix[k][j], boardMatrix[k - 1][j]);
-                    }
-                    else {
-                        boardMatrix[k][j].isEmpty = true;
-                        //merge tiles with same value
+                    } else if (boardMatrix[k - 1][j].value == boardMatrix[k][j].value) {
+                        // merge tiles with the same value
                         boardMatrix[k - 1][j].value *= 2;
+                        boardMatrix[k][j].isEmpty = true;
                     }
-                    //remove a k, so the loop checks tile above
+                    // remove a k, so the loop checks the tile above
                     --k;
                 }
             }
         }
     }
-    //after moving, spawn random tile
+    // after moving, spawn a random tile
     SpawnRandomTile();
 }
 
-void Board::moveDown() {
-    //iterate through each column
+
+void Board::moveRight() {
+    // iterate through each column
     for (int j = 0; j < boardMatrix[0].size(); ++j) {
-        //move tiles down within column
+        // move tiles down within the column
         for (int i = boardMatrix.size() - 2; i >= 0; --i) {
-            //checks if matrix is empty
-            if (boardMatrix[i][j].isEmpty) {
-                //loop will iterate downward through the column as long as there is empty space above the tile, or a tile that has same value as current tile
+            if (!boardMatrix[i][j].isEmpty) {
                 int k = i;
-                //if tiles below are empty, tiles are swapped. 
-                //if tiles have same value, they merge
                 while (k < boardMatrix.size() - 1 && (boardMatrix[k + 1][j].isEmpty || boardMatrix[k + 1][j].value == boardMatrix[k][j].value)) {
                     if (boardMatrix[k + 1][j].isEmpty) {
                         std::swap(boardMatrix[k][j], boardMatrix[k + 1][j]);
-                    }
-                    else {
-                        boardMatrix[k][j].isEmpty = true;
-                        //merge tiles with same value
+                    } else if (boardMatrix[k + 1][j].value == boardMatrix[k][j].value) {
                         boardMatrix[k + 1][j].value *= 2;
+                        boardMatrix[k][j].isEmpty = true;
                     }
-                    //remove a k, so the loop checks tile above
                     ++k;
                 }
             }
         }
     }
-    //after moving, spawn random tile
     SpawnRandomTile();
 }
 
-void Board::moveLeft() {
-    //iterate through each row
+void Board::moveUp() {
+    // iterate through each row
     for (int i = 0; i < boardMatrix[0].size(); ++i) {
-        //move tiles left within row
+        // move tiles left within the row
         for (int j = 1; j < boardMatrix.size(); ++j) {
-            //checks if matrix is empty
-            if (boardMatrix[i][j].isEmpty) {
-                //loop will iterate as long as there is empty space to the left the tile, or a tile that has same value as current tile
+            if (!boardMatrix[i][j].isEmpty) {
                 int k = j;
-                //if tiles left are empty, tiles are swapped. 
-                //if tiles have same value, they merge
                 while (k > 0 && (boardMatrix[i][k - 1].isEmpty || boardMatrix[i][k - 1].value == boardMatrix[i][k].value)) {
                     if (boardMatrix[i][k - 1].isEmpty) {
                         std::swap(boardMatrix[i][k], boardMatrix[i][k - 1]);
-                    }
-                    else {
-                        boardMatrix[i][k].isEmpty = true;
-                        //merge tiles with same value
+                    } else if (boardMatrix[i][k - 1].value == boardMatrix[i][k].value) {
                         boardMatrix[i][k - 1].value *= 2;
+                        boardMatrix[i][k].isEmpty = true;
                     }
-                    //remove a k, so the loop checks tile above
                     --k;
                 }
             }
         }
     }
-    //after moving, spawn random tile
     SpawnRandomTile();
-
-
 }
 
-void Board::moveRight() {
-    //iterate through each row
+
+void Board::moveDown() {
+    // iterate through each row
     for (int i = 0; i < boardMatrix[0].size(); ++i) {
-        //move tiles right within the row
+        // move tiles right within the row
         for (int j = boardMatrix.size() - 2; j >= 0; --j) {
-            //checks if matrix is empty
-            if (boardMatrix[i][j].isEmpty) {
-                //loop will iterate through the row as long as there is empty space right to the tile, or a tile that has same value as current tile
+            if (!boardMatrix[i][j].isEmpty) {
                 int k = j;
-                //if tiles right are empty, tiles are swapped. 
-                //if tiles have same value, they merge
                 while (k < boardMatrix.size() - 1 && (boardMatrix[i][k + 1].isEmpty || boardMatrix[i][k + 1].value == boardMatrix[i][k].value)) {
                     if (boardMatrix[i][k + 1].isEmpty) {
                         std::swap(boardMatrix[i][k], boardMatrix[i][k + 1]);
-                    }
-                    else {
-                        boardMatrix[i][k].isEmpty = true;
-                        //merge tiles with same value
+                    } else if (boardMatrix[i][k + 1].value == boardMatrix[i][k].value) {
                         boardMatrix[i][k + 1].value *= 2;
+                        boardMatrix[i][k].isEmpty = true;
                     }
-                    //remove a k, so the loop checks tile above
                     ++k;
                 }
             }
         }
     }
-    //after moving, spawn random tile
     SpawnRandomTile();
 }
