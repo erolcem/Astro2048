@@ -11,7 +11,7 @@ class Board {
     Board();
 
     void draw(sf::RenderWindow& window);
-
+    bool noMovement = false;
     void moveUp();
     void moveRight();
     void moveLeft();

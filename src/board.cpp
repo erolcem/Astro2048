@@ -70,10 +70,12 @@ void Board::moveLeft() {
                 while (k > 0 && (boardMatrix[k - 1][j].isEmpty || boardMatrix[k - 1][j].value == boardMatrix[k][j].value)) {
                     if (boardMatrix[k - 1][j].isEmpty) {
                         std::swap(boardMatrix[k][j], boardMatrix[k - 1][j]);
+                        noMovement = false;
                     } else if (boardMatrix[k - 1][j].value == boardMatrix[k][j].value) {
                         // merge tiles with the same value
                         boardMatrix[k - 1][j].value *= 2;
                         boardMatrix[k][j].isEmpty = true;
+                        noMovement = false;
                         //boardMatrix[k][j].value = 0;
                     }
                     // remove a k, so the loop checks the tile above
@@ -84,7 +86,11 @@ void Board::moveLeft() {
         }
     }
     // after moving, spawn a random tile
-    SpawnRandomTile();
+    if (!noMovement) { 
+        SpawnRandomTile();
+        noMovement = true;
+
+    }
 }
 
 
@@ -99,9 +105,11 @@ void Board::moveRight() {
                 while (k < boardMatrix.size() - 1 && (boardMatrix[k + 1][j].isEmpty || boardMatrix[k + 1][j].value == boardMatrix[k][j].value)) {
                     if (boardMatrix[k + 1][j].isEmpty) {
                         std::swap(boardMatrix[k][j], boardMatrix[k + 1][j]);
+                        noMovement = false;
                     } else if (boardMatrix[k + 1][j].value == boardMatrix[k][j].value) {
                         boardMatrix[k + 1][j].value *= 2;
                         boardMatrix[k][j].isEmpty = true;
+                        noMovement = false;
                         //boardMatrix[k][j].value = 0;
                     }
                     ++k;
@@ -110,7 +118,11 @@ void Board::moveRight() {
             
         }
     }
-    SpawnRandomTile();
+    if (!noMovement) { 
+        SpawnRandomTile();
+        noMovement = true;
+
+    }
 }
 
 
@@ -126,9 +138,11 @@ void Board::moveUp() {
                     //if spot above tile is empty, lift current tile up
                     if (boardMatrix[i][k - 1].isEmpty) {
                         std::swap(boardMatrix[i][k], boardMatrix[i][k - 1]);
+                        noMovement = false;
                     } else if (boardMatrix[i][k - 1].value == boardMatrix[i][k].value) {
                         boardMatrix[i][k - 1].value *= 2;
                         boardMatrix[i][k].isEmpty = true;
+                        noMovement = false;
                         //boardMatrix[k][j].value = 0;
                     }
                     --k;
@@ -138,7 +152,11 @@ void Board::moveUp() {
 
     }              
                     
-    SpawnRandomTile();
+    if (!noMovement) { 
+        SpawnRandomTile();
+        noMovement = true;
+
+    }
 }
 
 
@@ -152,9 +170,11 @@ void Board::moveDown() {
                 while (k < boardMatrix.size() - 1 && (boardMatrix[i][k + 1].isEmpty || boardMatrix[i][k + 1].value == boardMatrix[i][k].value)) {
                     if (boardMatrix[i][k + 1].isEmpty) {
                         std::swap(boardMatrix[i][k], boardMatrix[i][k + 1]);
+                        noMovement = false;
                     } else if (boardMatrix[i][k + 1].value == boardMatrix[i][k].value) {
                         boardMatrix[i][k + 1].value *= 2;
                         boardMatrix[i][k].isEmpty = true;
+                        noMovement = false;
                         //boardMatrix[k][j].value = 0;
                     }
                     ++k;
@@ -163,6 +183,10 @@ void Board::moveDown() {
             
         }
     }
-    SpawnRandomTile();
+    if (!noMovement) { 
+        SpawnRandomTile();
+        noMovement = true;
+
+    }
 }
 
