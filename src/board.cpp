@@ -55,8 +55,8 @@ void Board::SpawnRandomTile() {
         //return false;
     //}
 }
-
-
+//boardMatrix[0].size()
+//boardMatrix.size()
 
 void Board::moveLeft() {
     // iterate through each column
@@ -74,17 +74,19 @@ void Board::moveLeft() {
                         // merge tiles with the same value
                         boardMatrix[k - 1][j].value *= 2;
                         boardMatrix[k][j].isEmpty = true;
-                        boardMatrix[k][j].value = 0;
+                        //boardMatrix[k][j].value = 0;
                     }
                     // remove a k, so the loop checks the tile above
                     --k;
                 }
             }
+            
         }
     }
     // after moving, spawn a random tile
     SpawnRandomTile();
 }
+
 
 
 void Board::moveRight() {
@@ -100,36 +102,42 @@ void Board::moveRight() {
                     } else if (boardMatrix[k + 1][j].value == boardMatrix[k][j].value) {
                         boardMatrix[k + 1][j].value *= 2;
                         boardMatrix[k][j].isEmpty = true;
-                        boardMatrix[k][j].value = 0;
+                        //boardMatrix[k][j].value = 0;
                     }
                     ++k;
                 }
             }
+            
         }
     }
     SpawnRandomTile();
 }
 
+
 void Board::moveUp() {
     // iterate through each row
     for (int i = 0; i < boardMatrix[0].size(); ++i) {
-        // move tiles left within the row
+        // iterate through columns
         for (int j = 1; j < boardMatrix.size(); ++j) {
             if (!boardMatrix[i][j].isEmpty) {
                 int k = j;
+                 // loop will iterate upward through the column as long as there is empty space above the tile or a tile that has the same value as the current tile
                 while (k > 0 && (boardMatrix[i][k - 1].isEmpty || boardMatrix[i][k - 1].value == boardMatrix[i][k].value)) {
+                    //if spot above tile is empty, lift current tile up
                     if (boardMatrix[i][k - 1].isEmpty) {
                         std::swap(boardMatrix[i][k], boardMatrix[i][k - 1]);
                     } else if (boardMatrix[i][k - 1].value == boardMatrix[i][k].value) {
                         boardMatrix[i][k - 1].value *= 2;
                         boardMatrix[i][k].isEmpty = true;
-                        boardMatrix[k][j].value = 0;
+                        //boardMatrix[k][j].value = 0;
                     }
                     --k;
                 }
             }
         }
-    }
+
+    }              
+                    
     SpawnRandomTile();
 }
 
@@ -137,7 +145,7 @@ void Board::moveUp() {
 void Board::moveDown() {
     // iterate through each row
     for (int i = 0; i < boardMatrix[0].size(); ++i) {
-        // move tiles right within the row
+        // iterate through each column
         for (int j = boardMatrix.size() - 2; j >= 0; --j) {
             if (!boardMatrix[i][j].isEmpty) {
                 int k = j;
@@ -147,12 +155,14 @@ void Board::moveDown() {
                     } else if (boardMatrix[i][k + 1].value == boardMatrix[i][k].value) {
                         boardMatrix[i][k + 1].value *= 2;
                         boardMatrix[i][k].isEmpty = true;
-                        boardMatrix[k][j].value = 0;
+                        //boardMatrix[k][j].value = 0;
                     }
                     ++k;
                 }
             }
+            
         }
     }
     SpawnRandomTile();
 }
+

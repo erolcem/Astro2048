@@ -7,6 +7,8 @@ Tile::Tile(bool empty, bool merging) {
     isEmpty = empty;
     isMerging = merging;
 
+
+
     colourMap = {
     {0, sf::Color(140, 123, 90)}, // Keep the same color for 0
     {2, sf::Color(255, 0, 0)}, // Red
@@ -65,24 +67,24 @@ void Tile::draw(sf::RenderWindow& window, int x, int y) {
         tileDrawn.setFillColor(colourMap[0]);
     }
 
-
-/** 
+   
+ 
     // Create a text
     sf::Text text;
     text.setFont(font); 
 
     // Convert the integer value to a string
-    std::stringstream ss;
-    ss << value;
-    text.setString(ss.str()); 
+    //std::stringstream ss;
+    //ss << value;
+    //text.setString(ss.str()); 
 
     text.setCharacterSize(50); 
     text.setFillColor(sf::Color::Black); 
     text.setPosition(x * TILESIZE + PADDING, y * TILESIZE + PADDING); 
-*/
+
     // Draw the rectangle and the text
     window.draw(tileDrawn);
-    //window.draw(text);
+    window.draw(text);
 
 }
 

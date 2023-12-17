@@ -14,6 +14,7 @@ class Tile{
     std::map<int, sf::Color> colourMap;
 
     sf::Font font;
+    sf::Text text;
 
     Tile(bool empty, bool merging);
 

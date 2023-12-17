@@ -26,28 +26,25 @@ int main()
     board.SpawnRandomTile();
 
     sf::Font font;
-    sf::Text text;
+    font.loadFromFile("arial.ttf");
 
-    if (!font.loadFromFile("../fonts/arial.ttf")) //../fonts/
+    if (!font.loadFromFile("arial.ttf")) //../fonts/
     {
         std::cout << "Error importing fontAAAAAA\n";
     }
 
+    sf::Text text;
     text.setFont(font); 
-
-    // Convert the integer value to a string
-    //std::stringstream ss;
-    //ss << 100;
-    //text.setString(ss.str()); 
-
     text.setString("Hello world");
+    //text.setCharacterSize(50); 
+    //text.setFillColor(sf::Color::Black);
 
+    
 
-    text.setCharacterSize(50); 
-    text.setFillColor(sf::Color::Black);
 
     while (window.isOpen())
     {
+        
         for (auto event = sf::Event{}; window.pollEvent(event);)
         { 
             if (event.type == sf::Event::Closed)
