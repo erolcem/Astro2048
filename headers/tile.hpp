@@ -13,9 +13,6 @@ class Tile{
 
     std::map<int, sf::Color> colourMap;
 
-    sf::Font font;
-    sf::Text text;
-
     Tile(bool empty, bool merging);
 
     Tile() : value(0), isEmpty(true), isMerging(false) {} // Deafault Constructor 
@@ -23,6 +20,9 @@ class Tile{
     void draw(sf::RenderWindow& window, int x, int y);
 
     void setValue(int newVal);
+
+    sf::Text textValue;
+    sf::Font arial;
 
     
 };

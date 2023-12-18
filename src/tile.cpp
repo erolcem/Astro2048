@@ -46,12 +46,10 @@ Tile::Tile(bool empty, bool merging) {
     {131072, sf::Color(52, 120, 209)},
 };
 */
-/**
-    if (!font.loadFromFile("../fonts/arial.ttf")) //../fonts/
-    {
-        std::cout << "Error importing font\n";
+
+    if(!arial.loadFromFile("fonts/arial.ttf")) {
+        std::cout << "ARIAL BROKEN from TILE\n";
     }
-    */
 }
 
 
@@ -60,32 +58,37 @@ void Tile::draw(sf::RenderWindow& window, int x, int y) {
 
     sf::RectangleShape tileDrawn(sf::Vector2f(TILESIZE - 2 * PADDING, TILESIZE - 2 * PADDING));
     tileDrawn.setPosition(x * TILESIZE + PADDING, y * TILESIZE + PADDING); 
+    // Create a text
+    textValue.setFont(arial);
+
+
+    // Convert the integer value to a string
+    std::stringstream ss;
+    ss << value;
+    textValue.setString(ss.str()); 
+
+    textValue.setCharacterSize(50); 
+    textValue.setFillColor(sf::Color::Black); 
+    textValue.setPosition(x * TILESIZE + PADDING + 1*TILESIZE/3, y * TILESIZE + PADDING +TILESIZE/3); 
+
+    // Draw the rectangle and the text
+    
 
     if (colourMap.count(value) > 0 && !isEmpty) {
         tileDrawn.setFillColor(colourMap[value]);
+
     } else {
         tileDrawn.setFillColor(colourMap[0]);
     }
 
-   
- 
-    // Create a text
-    sf::Text text;
-    text.setFont(font); 
-
-    // Convert the integer value to a string
-    //std::stringstream ss;
-    //ss << value;
-    //text.setString(ss.str()); 
-
-    text.setCharacterSize(50); 
-    text.setFillColor(sf::Color::Black); 
-    text.setPosition(x * TILESIZE + PADDING, y * TILESIZE + PADDING); 
-
-    // Draw the rectangle and the text
     window.draw(tileDrawn);
-    window.draw(text);
 
+   if (colourMap.count(value) > 0 && !isEmpty) {
+        
+        window.draw(textValue);
+
+    } 
+ 
 }
 
 void Tile::setValue(int NewVal) {

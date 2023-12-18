@@ -25,22 +25,16 @@ int main()
     board.SpawnRandomTile();
     board.SpawnRandomTile();
 
-    sf::Font font;
-    font.loadFromFile("arial.ttf");
+    sf::Text score;
+    sf::Font arial;
 
-    if (!font.loadFromFile("arial.ttf")) //../fonts/
-    {
-        std::cout << "Error importing fontAAAAAA\n";
+    if(!arial.loadFromFile("fonts/arial.ttf")) {
+        std::cout << "ARIAL BROKEN\n";
     }
 
-    sf::Text text;
-    text.setFont(font); 
-    text.setString("Hello world");
-    //text.setCharacterSize(50); 
-    //text.setFillColor(sf::Color::Black);
-
+    score.setFont(arial);
+    score.setString("1000");
     
-
 
     while (window.isOpen())
     {
@@ -69,7 +63,7 @@ int main()
 
         window.clear(sf::Color(64, 55, 37));
         board.draw(window);
-        window.draw(text); 
+        window.draw(score); 
 
         window.display();
         
