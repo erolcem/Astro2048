@@ -6,7 +6,7 @@ Tile::Tile(bool empty, bool merging) {
   value = 0;
   isEmpty = empty;
   isMerging = merging;
-
+/**
   colourMap = {
       {0, sf::Color(140, 123, 90)},     // Keep the same color for 0
       {2, sf::Color(255, 0, 0)},        // Red
@@ -22,7 +22,8 @@ Tile::Tile(bool empty, bool merging) {
       {2048, sf::Color(0, 0, 0)},       // Black
                                         // Continue with other colors as needed
   };
-  /**
+  */
+  
       colourMap = {
       {0, sf::Color(140, 123, 90)},
       {2, sf::Color(191, 183, 166)},
@@ -43,7 +44,7 @@ Tile::Tile(bool empty, bool merging) {
       {65536, sf::Color(17, 128, 26)},
       {131072, sf::Color(52, 120, 209)},
   };
-  */
+  
 
   if (!arial.loadFromFile("fonts/arial.ttf")) {
     std::cout << "ARIAL BROKEN from TILE\n";

@@ -37,9 +37,9 @@ int main() {
   // Create a black rectangle
   sf::RectangleShape rectangle;
   rectangle.setSize(
-      sf::Vector2f(130.0f, 37.0f));         // Set the size of the rectangle
+      sf::Vector2f(300.0f, 37.0f));         // Set the size of the rectangle
   rectangle.setFillColor(sf::Color::Black); // Set the fill color to black
-  rectangle.setPosition(1.7 * 220.0f, 0);   // Set the position of the rectangle
+  rectangle.setPosition(1.7 * 185.0f, 0);   // Set the position of the rectangle
 
   score.setPosition(1.75 * 220.0f, 0);
 
@@ -78,7 +78,8 @@ int main() {
 
     int counter = board.counter;
     std::string strCounter = std::to_string(counter);
-    score.setString(strCounter);
+    std::string scoreboard = "Score: " + strCounter;
+    score.setString(scoreboard);
     window.draw(rectangle);
     window.draw(score);
 
